@@ -1,0 +1,45 @@
+ body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Минимальная высота для всего экрана */
+            padding-top: 70px; /* Отступ для контента, чтобы не перекрывало навигационной панелью */
+            background: url("https://i.pinimg.com/736x/e3/7d/a9/e37da92d1e32051af32a81a8950733f3.jpg");
+            background-repeat: no-repeat; /* Убирает повторение изображения */
+            background-size: cover; /* Покрывает весь экран */
+            background-position: center; /* Центрирует изображение */
+        }
+
+        .content {
+            flex: 1; /* Контент займет всё доступное пространство */
+        }
+
+        footer {
+            background-color: #171716;
+            color: yellow;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .card {
+            height: 200px; /* Фиксированная высота карточек */
+        }
+
+        .card-body {
+            overflow: hidden;
+        }
+
+        .card-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; /* Укоротить длинный текст с добавлением "..." */
+        }
+
+        .card img {
+            width: 100%; /* Изображение будет занимать всю ширину карточки */
+            height: 100%; /* Задайте нужную вам высоту изображения */
+            object-fit: cover; /* Обеспечит корректное отображение изображения в пределах заданных размеров */
+        }
+
+        .card {
+            height: auto; /* Убедитесь, что высота карточки автоматически адаптируется */
+        }

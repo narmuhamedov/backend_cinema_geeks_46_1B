@@ -10,6 +10,7 @@ urlpatterns = [
     path('first_lesson_django/', views.first_lesson_django, name='first_lesson_django'),
     path('image_link/', views.picture_view, name='picture_view'),
     path('', include('main_page.urls')),
+    path('', include('hashtags.urls')),
 
 ]
 urlpatterns += static(settings.MEDIA_URL,
