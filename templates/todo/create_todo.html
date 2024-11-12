@@ -1,0 +1,11 @@
+{%  include '../header.html'  %}
+
+<form action="/create_todo/" method="POST" enctype="multipart/form-data">
+    <h1>Создать задачу</h1>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Создать</button>
+</form>
+
+
+{%  include '../footer.html'  %}

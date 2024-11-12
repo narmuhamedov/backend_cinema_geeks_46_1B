@@ -1,0 +1,14 @@
+{%  include '../header.html'  %}
+<ul>
+    {% for i in todo_list %}
+    <li>
+        <h1>{{ i.title_todo }}</h1>
+        <p>{{ i.time_start }}</p>
+        <p>{{ i.time_end }}</p>
+        <p>{{ i.check_yes_no }}</p>
+    </li>
+    <button><a href="/todo_list/{{ i.id }}/delete/">Удалить</a></button>
+    <button><a href="/todo_list/{{ i.id}}/update/">Изменить</a></button>
+    {% endfor %}
+</ul>
+{%  include '../footer.html'  %}

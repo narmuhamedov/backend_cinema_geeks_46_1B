@@ -11,6 +11,7 @@ urlpatterns = [
     path('image_link/', views.picture_view, name='picture_view'),
     path('', include('main_page.urls')),
     path('', include('hashtags.urls')),
+    path('', include('todo.urls')),
 
 ]
 urlpatterns += static(settings.MEDIA_URL,
