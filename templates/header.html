@@ -36,7 +36,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false" style="color: yellow;">
-                        TODO
+                        TODO definition
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'create_todo' %}">Добавить</a></li>
@@ -46,6 +46,21 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false" style="color: yellow;">
+                        TODO CLASSES
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'create_todo' %}">Добавить</a></li>
+                        <li><a class="dropdown-item" href="{% url 'todo_class_list' %}">Список задач</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                    </ul>
+                </li>
+
+
                 <li class="nav-item">
                     <a class="nav-link enable" href="" style="color: yellow;">Регистрация</a>
                 </li>
@@ -53,8 +68,9 @@
                     <a class="nav-link enable" href="" style="color: yellow;">Другие фильмы</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+            <form action="{% url 'search' %}" method="GET" class="d-flex" role="search">
+                <input class="form-control me-2" type="text" type="search" name="q" placeholder="Поиск"
+                       aria-label="Поиск">
                 <button class="btn btn-outline-success" type="submit" style="color: yellow; border-color: yellow;">
                     Поиск
                 </button>

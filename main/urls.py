@@ -12,7 +12,7 @@ urlpatterns = [
     path('', include('main_page.urls')),
     path('', include('hashtags.urls')),
     path('', include('todo.urls')),
-
+    path('', include('cbv.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL,
                       document_root=settings.MEDIA_ROOT)

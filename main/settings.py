@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'main_page',
     'hashtags',
     'todo',
+    'cbv',
 ]
 
 MIDDLEWARE = [

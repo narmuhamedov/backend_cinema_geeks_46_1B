@@ -1,0 +1,61 @@
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .create-todo-form {
+        background-color: #fff;
+        padding: 20px;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .create-todo-form h1 {
+        color: #4CAF50;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .create-todo-form form {
+        width: 100%;
+    }
+
+    .create-todo-form label {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .create-todo-form input[type="text"],
+    .create-todo-form input[type="datetime-local"],
+    .create-todo-form input[type="file"],
+    .create-todo-form select,
+    .create-todo-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .create-todo-form button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .create-todo-form button:hover {
+        background-color: #45a049;
+    }

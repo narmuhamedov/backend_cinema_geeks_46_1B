@@ -12,7 +12,7 @@ def update_todo_view(request, id):
         form = forms.TodoForm(request.POST, instance=todo_id)
         if form.is_valid():
             form.save()
-            return HttpResponse('Задача успешно изменена')
+            return redirect('todoList')
     else:
         form = forms.TodoForm(instance=todo_id)
     return render(request, template_name='todo/update_todo.html',

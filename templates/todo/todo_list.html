@@ -1,14 +1,22 @@
-{%  include '../header.html'  %}
-<ul>
-    {% for i in todo_list %}
-    <li>
-        <h1>{{ i.title_todo }}</h1>
-        <p>{{ i.time_start }}</p>
-        <p>{{ i.time_end }}</p>
-        <p>{{ i.check_yes_no }}</p>
-    </li>
-    <button><a href="/todo_list/{{ i.id }}/delete/">Удалить</a></button>
-    <button><a href="/todo_list/{{ i.id}}/update/">Изменить</a></button>
-    {% endfor %}
-</ul>
-{%  include '../footer.html'  %}
+{% load static %}
+{% include '../header.html' %}
+<link rel="stylesheet" href="{% static 'css/todo_list.css' %}">
+<div class="container">
+    <div class="todo-list">
+        <h2>Список задач</h2>
+        <ul>
+            {% for i in todo_list %}
+            <li>
+                <h1>{{ i.title_todo }}</h1>
+                <p>Начало: {{ i.time_start }}</p>
+                <p>Конец: {{ i.time_end }}</p>
+                <p>Статус: {% if i.check_yes_no %}Завершено{% else %}Не завершено{% endif %}</p>
+                <button><a href="/todo_class/{{ i.id }}/delete/">Удалить</a></button>
+                <button><a href="/todo_list/{{ i.id }}/update/">Изменить</a></button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% include '../footer.html' %}

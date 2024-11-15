@@ -1,11 +1,15 @@
-{%  include '../header.html'  %}
+{% load static %}
+{% include '../header.html' %}
+<link rel="stylesheet" href="{% static 'css/create_update_todo.css' %}">
+<div class="container">
+    <div class="create-todo-form">
+        <h1>Создать задачу</h1>
+        <form action="/create_todo/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Создать</button>
+        </form>
+    </div>
+</div>
 
-<form action="/create_todo/" method="POST" enctype="multipart/form-data">
-    <h1>Создать задачу</h1>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Создать</button>
-</form>
-
-
-{%  include '../footer.html'  %}
+{% include '../footer.html' %}
