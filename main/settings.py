@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'hashtags',
     'todo',
     'cbv',
+    'parsing_rezka',
 ]
 
 MIDDLEWARE = [
