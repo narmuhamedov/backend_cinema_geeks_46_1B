@@ -14,6 +14,7 @@ urlpatterns = [
     path('', include('todo.urls')),
     path('', include('cbv.urls')),
     path('', include('parsing_rezka.urls')),
+    path('', include('users.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL,
                       document_root=settings.MEDIA_ROOT)

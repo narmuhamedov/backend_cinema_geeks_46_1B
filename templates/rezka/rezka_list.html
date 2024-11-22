@@ -1,17 +1,188 @@
+<!-- rezka/rezka_list.html -->
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Список фильмов</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        /* Стили для списка фильмов */
+        .films {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .film {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            width: calc(33.333% - 20px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .film:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .film img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .film-content {
+            padding: 15px;
+        }
+
+        .film-title {
+            font-size: 1.2em;
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+
+        /* Пагинация */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .pagination a, .pagination span {
+            padding: 10px 15px;
+            margin: 2px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #2c3e50;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .pagination a:hover {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            border-color: #2c3e50;
+        }
+
+        .pagination .current {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            border-color: #2c3e50;
+        }
+
+        .pagination .disabled {
+            color: #aaa;
+            border-color: #ddd;
+            pointer-events: none;
+        }
+
+        /* Сообщение об отсутствии фильмов */
+        .no-films {
+            text-align: center;
+            font-size: 1.2em;
+            color: #555;
+            margin: 50px 0;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .film {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .film {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Список Фильмов парсинг</h1>
+        <a href="/" style="text-decoration: none; color: white">
+            <h2>На главную</h2>
+        </a>
+    </header>
 
-{% for i in rezka %}
+    <div class="container">
+        {% if rezka %}
+            <div class="films">
+                {% for i in rezka %}
+                    <div class="film">
+                        <div class="film-content">
+                            <h2 class="film-title">{{ i.title }}</h2>
+                            <!-- Можно добавить дополнительную информацию о фильме здесь -->
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-films">Фильмы не найдены.</p>
+        {% endif %}
 
-<h1>{{ i.title  }}</h1>
-<img src="{{ i.image }}" alt="" width="400" height="400">
+        {% if is_paginated %}
+            <div class="pagination">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1" aria-label="Первая">&laquo; Первая</a>
+                    <a href="?page={{ page_obj.previous_page_number }}" aria-label="Предыдущая">Предыдущая</a>
+                {% else %}
+                    <span class="disabled" aria-label="Первая">&laquo; Первая</span>
+                    <span class="disabled" aria-label="Предыдущая">Предыдущая</span>
+                {% endif %}
 
-{% endfor %}
+                {# Отображение номеров страниц с ограничением #}
+                {% for num in paginator.page_range %}
+                    {% if num == page_obj.number %}
+                        <span class="current">Страница {{ num }}</span>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <a href="?page={{ num }}">Страница {{ num }}</a>
+                    {% endif %}
+                {% endfor %}
 
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" aria-label="Следующая">Следующая</a>
+                    <a href="?page={{ paginator.num_pages }}" aria-label="Последняя">Последняя &raquo;</a>
+                {% else %}
+                    <span class="disabled" aria-label="Следующая">Следующая</span>
+                    <span class="disabled" aria-label="Последняя">Последняя &raquo;</span>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
 </body>
 </html>

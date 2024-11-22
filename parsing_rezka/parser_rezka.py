@@ -30,12 +30,6 @@ def get_data(html):
     return rezka_list
 
 
-
-
-
-
-
-
 def parsing():
     response = get_html(URL)
     if response.status_code == 200:
@@ -46,5 +40,5 @@ def parsing():
         return rezka_list2
     else:
         raise Exception('Error Parsing Rezka')
-
-print(parsing())
+#
+# print(parsing())

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for i in person %}
+<h1>Никнейм - {{ i.username }}</h1>
+<p>Почта - {{ i.email }}</p>
+<p>Имя - {{ i.first_name }}</p>
+<p>Возраст - {{ i.age }}</p>
+{% if i.club %}
+<p>Вы зарегистрированы в - {{ i.club }} </p>
+{% else %}
+<p>Клуб не определен</p>
+{% endif %}
+<hr>
+<hr>
+{% endfor %}
+
+<form action="{% url 'users:login' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Выйти</button>
+</form>
+
+</body>
+</html>

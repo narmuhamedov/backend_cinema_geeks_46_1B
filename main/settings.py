@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'todo',
     'cbv',
     'parsing_rezka',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -40,6 +41,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'users.middlewares.AgeClubMiddleware',
 ]
 
 ROOT_URLCONF = 'main.urls'
