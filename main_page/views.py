@@ -18,14 +18,17 @@ class SearchView(generic.ListView):
         context['q'] = self.request.GET.get('q')
         return context
 
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 # # film_list
+@method_decorator(cache_page(60*15), name='dispatch')
 class FilmListView(generic.ListView):
     template_name = 'show.html'
     context_object_name = 'film_list'
     model = models.Films
 
     def get_queryset(self):
-        return self.model.objects.filter().order_by('-id')
+        return self.model.objects.select_related().order_by('-id')
 
 
 # def films_list_view(request):

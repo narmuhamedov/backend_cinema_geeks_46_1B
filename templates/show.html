@@ -4,6 +4,8 @@
 <div class="container mt-4 content">
     <div class="row justify-content-center">
         {% for i in film_list %}
+        {% load cache %}
+        {% cache 600 film_list %}
         <!-- Пример для еще одной карточки -->
         <div class="col-md-4 mb-4">
             <div class="card" style="width: 100%;">
@@ -16,6 +18,7 @@
                 </div>
             </div>
         </div>
+        {% endcache %}
         {% endfor %}
     </div>
 </div>

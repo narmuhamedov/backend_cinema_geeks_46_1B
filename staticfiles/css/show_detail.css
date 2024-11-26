@@ -1,0 +1,15 @@
+ .movie-card {
+            margin-bottom: 20px;
+        }
+
+        .comment-section {
+            margin-top: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .comment {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
