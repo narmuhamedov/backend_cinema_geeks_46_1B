@@ -8,21 +8,19 @@ from main_page import views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('first_lesson_django/', views.first_lesson_django, name='first_lesson_django'),
-    path('image_link/', views.picture_view, name='picture_view'),
-    path('', include('main_page.urls')),
-    path('', include('hashtags.urls')),
-    path('', include('todo.urls')),
-    path('', include('cbv.urls')),
-    path('', include('parsing_rezka.urls')),
-    path('', include('users.urls')),
+    path("admin/", admin.site.urls),
+    path("first_lesson_django/", views.first_lesson_django, name="first_lesson_django"),
+    path("image_link/", views.picture_view, name="picture_view"),
+    path("", include("main_page.urls")),
+    path("", include("hashtags.urls")),
+    path("", include("todo.urls")),
+    path("", include("cbv.urls")),
+    path("", include("parsing_rezka.urls")),
+    path("", include("users.urls")),
 ]
-urlpatterns += static(settings.MEDIA_URL,
-                      document_root=settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL,
-                      document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 if settings.DEBUG:
-    urlpatterns += [path('__debug__/', include('debug_toolbar.urls'))]
+    urlpatterns += [path("__debug__/", include("debug_toolbar.urls"))]

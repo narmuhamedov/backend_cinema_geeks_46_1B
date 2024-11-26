@@ -6,17 +6,21 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main_page', '0002_films_created_at'),
+        ("main_page", "0002_films_created_at"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='films',
-            options={'verbose_name': 'фильм', 'verbose_name_plural': 'фильмы'},
+            name="films",
+            options={"verbose_name": "фильм", "verbose_name_plural": "фильмы"},
         ),
         migrations.AddField(
-            model_name='films',
-            name='description',
-            field=models.TextField(default='Lorem Ipsum', null=True, verbose_name='Укажите описание к фильму'),
+            model_name="films",
+            name="description",
+            field=models.TextField(
+                default="Lorem Ipsum",
+                null=True,
+                verbose_name="Укажите описание к фильму",
+            ),
         ),
     ]

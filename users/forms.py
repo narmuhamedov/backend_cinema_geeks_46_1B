@@ -4,15 +4,16 @@ from django.contrib.auth.forms import UserCreationForm
 from . import models
 
 GENDER = (
-    ('M', 'Мужской'),
-    ('F', 'Женский'),
+    ("M", "Мужской"),
+    ("F", "Женский"),
 )
 
+
 class CustomRegistrationForm(UserCreationForm):
-    email = forms.EmailField(required=True, label='Электронная почта')
-    phone_number = forms.CharField(required=True, label='Номер телефона')
-    age = forms.IntegerField(required=True, label='Возраст')
-    gender = forms.ChoiceField(choices=GENDER, required=True, label='Пол')
+    email = forms.EmailField(required=True, label="Электронная почта")
+    phone_number = forms.CharField(required=True, label="Номер телефона")
+    age = forms.IntegerField(required=True, label="Возраст")
+    gender = forms.ChoiceField(choices=GENDER, required=True, label="Пол")
 
     class Meta:
         model = models.CustomUser
